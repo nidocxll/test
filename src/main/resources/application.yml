@@ -1,0 +1,43 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: dev
+  redis:
+    # redis库
+    database: 0
+    # redis 服务器地址
+    host: localhost
+    # redis 端口号
+    port: 6379
+    # redis 密码
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 1000
+    lettuce:
+      pool:
+        # 连接池最大链接数（负数表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（负数表示没有限制）
+        max-wait: -1
+        # 连接池最大空闲连接数
+        max-idle: 8
+        # 连接池最小空闲连接数
+        min-idle: 0
+
+
+mybatis-plus:
+  configuration:
+    #mybatis-plus配置控制台打印完整带参数SQL语句
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #设置当查询结果值为null时，同样映射该查询字段给map
+    call-setters-on-nulls: true
+  #配置mapper.xml文件的路径
+  mapper-locations: classpath:mapper/*.xml

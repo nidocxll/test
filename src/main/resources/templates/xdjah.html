@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div class="form-group" id="thumbnailUploadContainer" class="col-sm-10" style="float: left; margin-right: 50px;">
+    <input id="articleImageFile" name="excelFile" type="file" class="form-control"
+           style="width: 300px; display: inline;"/>
+    <input id="saveZipButton" type="button" style="width: 60px;height: 35px;" value="上传"/>
+</div>
+</body>
+<script>
+    //导入excel文件
+    $("#saveZipButton").on('click', function () {
+        var formData = new FormData();
+        var name = $("#articleImageFile").val();
+        formData.append("file", $("#articleImageFile")[0].files[0]);
+        formData.append("name", name);//这个地方可以传递多个参数
+        $.ajax({
+            url: "http://localhost:8081/get/importCourse",
+            type: 'POST',
+            async: false,
+            data: formData,
+            // 告诉jQuery不要去处理发送的数据
+            processData: false,
+            // 告诉jQuery不要去设置Content-Type请求头
+            contentType: false,
+            beforeSend: function () {
+                console.log("正在进行，请稍候");
+            },
+            success: function (responseStr) {
+                if (responseStr == "01") {
+                    alert("导入成功");
+                } else {
+                    alert("导入失败");
+                }
+            }
+        });
+    });
+</script>
+</html>
