@@ -31,6 +31,7 @@ public class UserController {
 
         redisTemplate.opsForValue().set("hot",String.valueOf(list));
         System.out.println(redisTemplate.opsForValue().get("hot"));
+        //jdkalkkfdjlafjdalk
 
         return  list;
     }
