@@ -33,6 +33,8 @@ public class UserController {
         System.out.println(redisTemplate.opsForValue().get("hot"));
         //jdkalkkfdjlafjdalk
 
+        //12345679
+
         return  list;
     }
 
