@@ -68,6 +68,9 @@ public class FileUpload {
                 }
                 try {
                     User user = new User();
+
+
+
                     user.setId((int) row.getCell(0).getNumericCellValue());
                     user.setName(row.getCell(1).getStringCellValue());
                     user.setPassword(row.getCell(2).getStringCellValue());
